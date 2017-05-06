@@ -1,10 +1,13 @@
+{{#each columns as |col|}}
+    <td>{{pager-loop model=item field=col}}</td>
+{{/each}}
 <td class="clearfix">
   {{#if linkPath}}
-      <span class="pull-right" style="margin-left:5px;">
-        {{#link-to linkPath item.id class="btn btn-default btn-xs pull-right"}}
-          {{fa-icon 'folder-open'}}
-        {{/link-to}}
-      </span>
+    <span class="pull-right" style="margin-left:5px;">
+      {{#link-to linkPath item.id class="btn btn-default btn-xs pull-right"}}
+        {{fa-icon 'folder-open'}}
+      {{/link-to}}
+    </span>
   {{/if}}
   {{#if editPath}}
     {{#link-to editPath item.id class="btn btn-default btn-xs pull-right"}}
@@ -12,11 +15,8 @@
     {{/link-to}}
   {{/if}}
   {{#if this.attrs.deleteAction}}
-      <a {{action this.attrs.deleteAction item}} class="btn btn-default btn-xs pull-right" href="#">
-        {{fa-icon 'trash'}}
-      </a>
+    <a {{action this.attrs.deleteAction item}} class="btn btn-default btn-xs pull-right" href="#">
+      {{fa-icon 'trash'}}
+    </a>
   {{/if}}
 </td>
-{{#each columns as |col|}}
-    <td>{{pager-loop model=item field=col}}</td>
-{{/each}}

@@ -1,30 +1,11 @@
 <table class="table table-bordered table-striped {{if scrollMode "scrolling-content" ""}}">
     <thead>
   <tr role="row" style={{min-width-if-true scrollMode 100}}>
-        <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style={{width-in-pixels actionWidth}}></th>
       {{#each columns as |item|}}
           <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style={{width-in-pixels item.width}}>
-            {{#unless item.disableServerInteractions}}
-              {{#if item.enableSearch }}
-                  <a {{action (toggle 'showFilter' this)}}><i class="fa fa-search"></i></a>
-              {{/if}}
-            {{/unless}}
+
             {{item.displayName}}
-            {{#unless item.disableServerInteractions}}
-              {{#if (and (eq sortProperty item.apiInteractionName) (eq sortDirection 'asc'))}}
-                  <a {{action (action this.attrs.changeSort item.apiInteractionName 'desc')}}>
-                      <i class="fa fa-sort-asc"></i>
-                  </a>
-              {{else if (and (eq sortProperty item.apiInteractionName) (eq sortDirection 'desc'))}}
-                  <a {{action (action this.attrs.changeSort '')}}>
-                      <i class="fa fa-sort-desc"></i>
-                  </a>
-              {{else}}
-                  <a {{action (action this.attrs.changeSort item.apiInteractionName 'asc')}}>
-                      <i class="fa fa-sort"></i>
-                  </a>
-              {{/if}}
-            {{/unless}}
+
               <div class="row {{if (and showFilter item.enableSearch (not item.disableServerInteractions)) '' 'hidden'}}">
                   {{!--<div class="col-md-12">--}}
                     {{input type="text" class="form-control" value=item.filterValue name=item.fieldName }}
@@ -32,6 +13,7 @@
               </div>
           </th>
       {{/each}}
+    <th role="columnheader" tabindex="0" rowspan="1" colspan="1" style={{width-in-pixels actionWidth}}></th>
     </tr>
     </thead>
 
